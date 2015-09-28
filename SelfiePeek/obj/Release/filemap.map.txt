@@ -1,0 +1,21 @@
+﻿[ResourceMetadata]
+"ResourceDimensions"		"scale-240"
+"ResourceDimensions"		"language-en-us"
+
+[Files]
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\filemap.pri"			"resources.pri"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\WebRequestAsync.dll"			"WebRequestAsync.dll"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\ShowImage.xbf"			"ShowImage.xbf"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\SelfiePeek.xr.xml"			"SelfiePeek.xr.xml"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\SelfiePeek.exe"			"SelfiePeek.exe"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\Readme.txt"			"Readme.txt"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\Newtonsoft.Json.dll"			"Newtonsoft.Json.dll"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\MainPage.xbf"			"MainPage.xbf"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\LoginPage.xbf"			"LoginPage.xbf"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\App.xbf"			"App.xbf"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\Assets\WideLogo.scale-240.png"			"Assets\WideLogo.scale-240.png"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\Assets\StoreLogo.scale-240.png"			"Assets\StoreLogo.scale-240.png"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\Assets\Square71x71Logo.scale-240.png"			"Assets\Square71x71Logo.scale-240.png"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\Assets\SplashScreen.scale-240.png"			"Assets\SplashScreen.scale-240.png"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\Assets\SmallLogo.scale-240.png"			"Assets\SmallLogo.scale-240.png"
+"D:\Projects\SelfiePeek\SelfiePeek\obj\Release\PackageLayout\Assets\Logo.scale-240.png"			"Assets\Logo.scale-240.png"

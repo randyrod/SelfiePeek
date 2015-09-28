@@ -1,0 +1,89 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SelfiePeek"
+    xmlns:myControl="using:SelfiePeek.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModels="using:SelfiePeek.ViewModels"
+    x:Class="SelfiePeek.MainPage"
+    mc:Ignorable="d"
+    >
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Sort" Label="Rearrange" Click="SortBtn_Click"/>
+            <AppBarButton Icon="Refresh" Label="Refresh" Click="RefreshBtn_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <ProgressBar HorizontalAlignment="Stretch" Height="10" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding ActivityVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <StackPanel Margin="19,0,0,0">
+                <TextBlock Text="Selfie Peek" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0" Foreground="Black"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock
+                Text="{Binding Message}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="10"
+                Foreground="Black"
+                TextWrapping="WrapWholeWords"
+                Visibility="{Binding MessageVisible, Converter={StaticResource BoolToVisibilityConverter}}"
+                FontSize="{StaticResource ContentControlFontSize}"/>
+            <myControl:SpecialGridView
+            x:Name="selfiesGridView"
+            CanDragItems="True"
+            CanReorderItems="True"
+            AllowDrop="True"
+                IsItemClickEnabled="True"
+                SelectionMode="Single"
+            ItemClick="GridViewItem_Click"
+            ItemsSource="{Binding SelfieList}"
+            >
+                <myControl:SpecialGridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Stretch="UniformToFill"  Source="{Binding Thumbnail}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            <Grid Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                                <Rectangle
+                    Fill="White"
+                    Opacity=".5"/>
+                                <TextBlock Foreground="{StaticResource PhoneAccentBrush}" TextWrapping="WrapWholeWords" Margin="10, 4" Text="{Binding UserName}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="{StaticResource ContentControlFontSize}"/>
+                            </Grid>
+                            <Border BorderBrush="Black" BorderThickness="1" Opacity=".1" />
+                        </Grid>
+                    </DataTemplate>
+                </myControl:SpecialGridView.ItemTemplate>
+                <myControl:SpecialGridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="VariableSizedWrapGrid.ColumnSpan" Value="{Binding ColSpan}"/>
+                        <Setter Property="VariableSizedWrapGrid.RowSpan" Value="{Binding ColSpan}"/>
+                        <Setter Property="Margin" Value="8"/>
+                    </Style>
+                </myControl:SpecialGridView.ItemContainerStyle>
+                <myControl:SpecialGridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VariableSizedWrapGrid
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal"
+                        ItemHeight="190"
+                        ItemWidth="190"/>
+                    </ItemsPanelTemplate>
+                </myControl:SpecialGridView.ItemsPanel>
+            </myControl:SpecialGridView>
+        </Grid>
+    </Grid>
+</Page>

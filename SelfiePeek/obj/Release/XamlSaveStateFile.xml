@@ -1,0 +1,7 @@
+<XamlCompilerSaveState>
+  <ReferenceAssemblyList>
+    <LocalAssembly PathName="d:\projects\selfiepeek\selfiepeek\obj\release\intermediatexaml\selfiepeek.exe" HashGuid="b1dab235-4585-ae24-7661-5ca774eadc34" />
+    <ReferenceAssembly PathName="d:\projects\selfiepeek\packages\newtonsoft.json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\newtonsoft.json.dll" HashGuid="0b4cdfc1-2257-2e75-23cf-4052e97b309e" />
+    <ReferenceAssembly PathName="d:\projects\selfiepeek\webrequestasync\bin\release\webrequestasync.dll" HashGuid="ec8e7812-ee3f-b735-1718-1fbc31a02a0c" />
+  </ReferenceAssemblyList>
+</XamlCompilerSaveState>

@@ -1,0 +1,2 @@
+D:\Projects\SelfiePeek\SelfiePeek\SelfiePeek.csproj;neutral
+D:\Projects\SelfiePeek\WebRequestAsync\WebRequestAsync.csproj;neutral
