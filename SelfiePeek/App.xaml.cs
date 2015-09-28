@@ -65,10 +65,6 @@ namespace SelfiePeek
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
                 if (ApplicationData.Current.LocalSettings.Values.ContainsKey(SharedStrings.AccessTokenKeyValue))
                 {
-                    ApplicationData.Current.LocalSettings.Values.Remove(SharedStrings.AccessTokenKeyValue);
-                }
-                if (ApplicationData.Current.LocalSettings.Values.ContainsKey(SharedStrings.AccessTokenKeyValue))
-                {
                     SharedStrings.CurrentToken = ApplicationData.Current.LocalSettings.Values[SharedStrings.AccessTokenKeyValue].ToString();
                     if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
                     {
