@@ -33,37 +33,8 @@ namespace SelfiePeek.ViewModels
                     ActivityVisible = true;
                     MessageVisible = true;
                     Message = "Loading most recent #Selfies";
-                    AsyncWebRequest client = new AsyncWebRequest();
-                    var apiRequestURL = SharedStrings.InstagramAPIBaseURI + SharedStrings.CurrentToken;
-                    var resp = await client.MakeRequest<InstagramRawBase>(apiRequestURL);
-                    int colSpan = 0;
-                    if (resp != null && resp.data != null && resp.data.Count > 0)
-                    {
-                        var data = resp.data;
-                        var selfies = new List<SelfiePeekDataModel>();
-                        foreach (var item in data)
-                        {
-                            var extracted = new SelfiePeekDataModel();
-                            extracted.UserName = item.user.username;
-                            extracted.Thumbnail = new Uri(item.images.standard_resolution.url);
-                            extracted.Caption = item.caption.text;
-                            var tags = new List<string>();
-                            foreach (var tag in item.tags)
-                            {
-                                tags.Add(tag);
-                            }
-                            extracted.Tags = tags;
-                            extracted.ColSpan = (colSpan % 3 == 0) ? 2 : 1;
-                            colSpan++;
-                            selfies.Add(extracted);
-                        }
-                        if (SelfieList != null && SelfieList.Count > 0)
-                        {
-                            SelfieList.Clear();
-                        }
-                        SelfieList = new ObservableCollection<SelfiePeekDataModel>(selfies);
-                        Loaded = true;
-                    }
+                    var res = await InstagramRequest.MakeInstagramRequest();
+                    SelfieList = new ObservableCollection<SelfiePeekDataModel>(res);
                     Message = "";
                     ActivityVisible = false;
                     MessageVisible = false;
@@ -91,6 +62,29 @@ namespace SelfiePeek.ViewModels
             }
         }
 
+        public async void LoadMore()
+        {
+            if (ConnectionManager.CheckInternetAccess())
+            {
+                ActivityVisible = true;
+                var res = await InstagramRequest.MakeInstagramRequest(SelfieList.Count - 1);
+                if (res != null && res.Count > 0)
+                {
+                    foreach (var item in res)
+                    {
+                        SelfieList.Add(item);
+                    }
+                }
+                ActivityVisible = false;
+            }
+            else
+            {
+                MessageVisible = true;
+                ActivityVisible = false;
+                Message = "We cannot connect to the internet";
+            }
+        }
+        
         #region Properties Region
         //Property Used to display Message over the main User UI, via Data Binding
         private string _Message;

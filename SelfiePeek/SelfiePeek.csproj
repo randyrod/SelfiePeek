@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Utilities\ConnectionManager.cs" />
     <Compile Include="Utilities\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Utilities\InstagramRequest.cs" />
     <Compile Include="Utilities\SharedStrings.cs" />
     <Compile Include="ViewModels\PeekViewModel.cs" />
   </ItemGroup>

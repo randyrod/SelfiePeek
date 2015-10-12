@@ -22,12 +22,55 @@ namespace SelfiePeek.Controls
     /// </summary>
     public class SpecialGridView : GridView
     {
+        private ScrollViewer _MyScroll { get; set; }
+
         public SpecialGridView()
         {
             this.DragItemsStarting += SpecialGridView_DragItemsStarting;
+            this.Loaded += SpecialGridView_Loaded;
+        }
+        #region Incremental Loading
+        void SpecialGridView_Loaded(object sender, RoutedEventArgs e)
+        {
+            _MyScroll = GetVisualChild<ScrollViewer>(this);
+            if (_MyScroll != null)
+            {
+                _MyScroll.ViewChanged += _MyScroll_ViewChanged;
+            }
         }
 
-        
+        void _MyScroll_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            if (_MyScroll.ScrollableHeight - _MyScroll.VerticalOffset < 300)
+            {
+                if (!App.PeekVM.ActivityVisible)
+                {
+                    App.PeekVM.LoadMore();
+                }
+            }
+        }
+
+        private T GetVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            T child = default(T);
+            int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < numVisuals; i++)
+            {
+                DependencyObject v = VisualTreeHelper.GetChild(parent, i) as DependencyObject;
+                child = v as T;
+                if (child == null)
+                {
+                    child = GetVisualChild<T>(v);
+                }
+                if (child != null)
+                {
+                    break;
+                }
+            }
+            return child;
+        }
+        #endregion
+
         #region Events Region
         void SpecialGridView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
